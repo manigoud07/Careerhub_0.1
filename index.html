@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careerhub</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts Links For Icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  </head>
+ 
+ </head>
   <body>
     <header>
       <nav class="navbar">
@@ -34,19 +33,49 @@
         <button><a href="test.html"  style="color: black;">RECRITEMENT PROCESS</a></button>
         <button><a href="learning.html"  style="color: black;">E-LEARNING</a></button>
         <button><a href="internships.html" style="color: black;">INTERNSHIPS</a></button>
+        
       </div>
     </section>
+  </div>
+  <div class="button-container">
+      <button class="logout-btn" type="button" id="signoutbutton">logout</button>
+  </div>
+      
+  
 
     <script>
+      
       const header = document.querySelector("header");
       const hamburgerBtn = document.querySelector("#hamburger-btn");
       const closeMenuBtn = document.querySelector("#close-menu-btn");
+      
 
-      // Toggle mobile menu on hamburger button click
       hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
 
-      // Close mobile menu on close button click
+    
       closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+      
+      let usercreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let userinfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+
+        let SignoutBtn = document.getElementById('signoutbutton');
+
+       
+
+        let signout = ()=>{
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = 'login.html'
+        }
+        let checkcred = ( ) =>{
+          if (!sessionStorage.getItem("user-creds"))
+            window.location.href = 'login.html'
+        
+   }
+        window.addEventListener('load', checkcred);
+        SignoutBtn.addEventListener('click', signout);
+
     </script>
     
   </body>
