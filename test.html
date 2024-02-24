@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Folders</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url(Backgrounds/re\ bg.jpg);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+           overflow: hidden;
+        }
+
+        header {
+            
+            padding: 0px;
+            width: 100%;
+            margin: 10px;
+            text-align: center;
+            
+        }
+
+        h1 {
+            color: #fff;
+            border: 2px dashed whitesmoke;
+            padding: 10px;
+            margin: 15px 0;
+            font-weight: bold;
+            
+        }
+
+        .folder-container {
+            width: 500px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 90px;
+        }
+        
+        
+        
+        .folder {
+            width: 120px;
+            height: 120px;
+            background-color: #2e3233;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            text-decoration: none;
+        }
+
+        .folder:hover {
+            background-color: #e6a690;
+        }
+
+        .folder img {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .folder-container {
+                width: 100%;
+            }
+        }
+        .logout-btn {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  display: grid;
+  background:#9694935c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  font-size: -1rem;
+  border-radius: 5px;
+  margin-top: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+  text-align: center;
+  
+ 
+}
+.logout-btn:hover{
+  color: #fff;
+  background: #ff813e;
+  letter-spacing: 3px;
+  box-shadow: #fe600a 0px 7px 29px 0px;
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.navbar a:hover {
+  color: #C06B3E;
+}
+
+
+
+.navbar .menu-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+  margin-top: -80px;
+}
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>RECRUITMENT PROCESS</h1>
+    </header>
+    <header>
+        <nav class="navbar">
+          
+          <ul class="menu-links">
+           
+            <li><a href="main.html">Home</a></li>
+          </ul>
+          
+        </nav>
+      </header>
+
+    <div class="folder-container">
+        <a href="amazon.html" class="folder">
+            <img src="logos/amazon.png" alt="Folder Icon">
+        </a>
+
+        <a href="deliote.html" class="folder">
+            <img src="logos/del.png" alt="Folder Icon">
+        </a>
+
+        <a href="google.html" class="folder">
+            <img src="logos/google.png" alt="Folder Icon">
+        </a>
+
+        <a href="microsoft.html" class="folder">
+            <img src="logos/microsoft.png" alt="Folder Icon">
+        </a>
+
+        <a href="tcs.html" class="folder">
+            <img src="logos/tcs.jpg" alt="Folder Icon">
+        </a>
+
+        <a href="accenture.html" class="folder">
+            <img src="logos/accenture.png" alt="Folder Icon">
+        </a>
+
+        <a href="ibm.html" class="folder">
+            <img src="logos/ibm.png" alt="Folder Icon">
+        </a>
+
+        <a href="cognigent.html" class="folder">
+            <img src="logos/Cognizant.png" alt="Folder Icon">
+        </a>
+
+        <a href="capgemini.html" class="folder">
+            <img src="logos/Capgemini.png" alt="Folder Icon">
+        </a>
+    </div>
+    <div class="button-container">
+        <button class="logout-btn" type="button" id="signoutbutton">logout</button>
+       
+    </div>
+    <script>
+         let usercreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let userinfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+
+        let SignoutBtn = document.getElementById('signoutbutton');
+
+       
+
+        let signout = ()=>{
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = 'index.html'
+        }
+        let checkcred = ( ) =>{
+          if (!sessionStorage.getItem("user-creds"))
+            window.location.href = 'index.html'
+        
+   }
+        window.addEventListener('load', checkcred);
+        SignoutBtn.addEventListener('click', signout);
+    </script>
+</body>
+</html>
